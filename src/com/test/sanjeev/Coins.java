@@ -12,33 +12,23 @@ public class Coins {
 
 	}
 
-	private static int helper(ArrayList<Integer> coins, int total) {
-		ArrayList<Integer> dp = new ArrayList<Integer>();
-		for(int i=0;i<total;i++)
-			dp.add(0);
-		for(int coin:coins) {
-			dp.set(coin, 1);
-		}
+private static int helper(ArrayList<Integer> coins, Integer amount) {
+		Integer  n = coins.size();
+		Integer dp[][] = new Integer[n+1][amount+1] ;
 		
-		
-		return minNumOfCoins(coins, dp, total);
-		
-		
+		for(int i=0; i<=n; i++)
+			for(int j=0; j<=amount;j++) {
+				if(j==0)
+					dp[i][j]=0;
+				else if(i==0)
+					dp[i][j]=100000;
+				
+				else if(coins.get(i-1)>j)
+					dp[i][j] = dp[i-1][j];
+				else 
+					dp[i][j] = Math.min(1+dp[i][j-coins.get(i-1)], dp[i-1][j]);
+			}
+			
+		return dp[n][amount] > (100000)? -1:dp[n][amount] ;
 	}
-
-public static int minNumOfCoins(ArrayList<Integer> denoms,ArrayList<Integer> dp, int total) {
-
-    for(int amount=1;amount<total;amount++)
-        for(int denomIdx=0; denomIdx < denoms.size();denomIdx++){
-            int diff = amount - denoms.get(denomIdx);
-            if(diff >=0 && dp.get(diff) != Integer.MAX_VALUE){
-                
-                dp.set(diff, Math.min(dp.get(amount),dp.get(diff)+1));
-                
-            }
-            
-        }
-    
-    return dp.get(dp.size()-1) != Integer.MAX_VALUE ? dp.get(dp.size()-1) : -1;
-}  
 }
