@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Solution2 {
+public class MaxProductOfCutInRope {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
