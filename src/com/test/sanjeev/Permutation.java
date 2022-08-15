@@ -2,7 +2,7 @@ package com.test.sanjeev;
 
 import java.util.ArrayList;
 
-public class Solution3 {
+public class Permutation {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -14,20 +14,6 @@ public class Solution3 {
 		System.out.print(get_permutations(arr));
 	}
 	
-	/*
-	 * public static List<String> twoSum(int[] nums, int target) { List<String> ret
-	 * = new ArrayList<>(); isSumFound(nums, target,0,nums.length-1,ret); return
-	 * ret;
-	 * 
-	 * } private static boolean isSumFound(int[] arr, int sum, int i, int j,
-	 * List<String> ret ) { if (i == j) return false; if (arr[i] + arr[j] == sum){
-	 * ret.add(i+","+j); }
-	 * 
-	 * if (arr[i] + arr[j] < sum) return isSumFound(arr, sum, i + 1, j,ret); return
-	 * isSumFound(arr, sum, i, j - 1,ret);
-	 * 
-	 * }
-	 */
 	
 	static ArrayList<ArrayList<Integer>> get_permutations(ArrayList<Integer> arr) {
         // Write your code here.
