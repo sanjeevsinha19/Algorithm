@@ -23,9 +23,9 @@ public class LetterCase {
 				letterCasePermutation(s.substring(i,i+1).toLowerCase(), result,size);
 				letterCasePermutation(s.substring(i,i+1).toUpperCase(), result,size);
 			}
-			else temp=+s;
+			else temp= temp+s;
 			
-			if(i==s.le)
+			
 			
 		}
 			
