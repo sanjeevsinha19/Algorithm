@@ -1,4 +1,4 @@
-package com.test.sanjeev;
+package com.test.sanjeev.sort;
 /*
 Case	Time Complexity
 Best Case

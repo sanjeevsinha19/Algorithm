@@ -6,30 +6,30 @@ public class LetterCase {
 
 	public static void main(String[] args) {
 		ArrayList<String> result= new ArrayList<String>();
-		System.out.println(letterCasePermutation("z12d", result, 4));
+		letterCasePermutation("z12d1E ", "", result, 0);
+		System.out.println(result);
 
 	}
 
-	private static ArrayList<String> letterCasePermutation(String s, ArrayList<String> result, int size) {
+	private static void letterCasePermutation(String s, String slate,  ArrayList<String> result, int n) {
 		
-		if(s.isEmpty()) return result;
-		
-		
-			
-			String temp ="";
-		for(int i=0;i<s.length();i++) {
-			if(s.substring(0,1).matches("^[a-zA-Z]+$")) {
-				
-				letterCasePermutation(s.substring(i,i+1).toLowerCase(), result,size);
-				letterCasePermutation(s.substring(i,i+1).toUpperCase(), result,size);
-			}
-			else temp= temp+s;
-			
-			
-			
+		if(s.length()==n) {
+			result.add(slate);
+			return ;
 		}
+		
+			while(!s.substring(n,n+1).matches("^[a-zA-Z]+$")) {
+				slate= slate+s.substring(n,n+1);
+				n++;
+			}
 			
-		return null;
+			letterCasePermutation(s,slate+s.substring(n,n+1).toLowerCase(), result,n+1 );
+			letterCasePermutation(s, slate+s.substring(n,n+1).toUpperCase(), result,n+1);
+			
+			
+			
+		
+	
 	}
 	
 

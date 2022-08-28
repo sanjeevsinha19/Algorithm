@@ -9,7 +9,7 @@ public class Permutation {
 		ArrayList<Integer> arr = new ArrayList<>();
 		arr.add(1);
 		arr.add(2);
-		arr.add(3);
+		arr.add(2);
 	
 		System.out.print(get_permutations(arr));
 	}

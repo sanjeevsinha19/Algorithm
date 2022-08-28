@@ -1,32 +1,39 @@
 package com.test.sanjeev;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 public class SubSetAllSum {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Integer> nums = new ArrayList<Integer>();
-		
+		//Integer [] arr1 = {94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94};
+		//nums =  Arrays.asList(arr1);
+		nums.add(1);
 		nums.add(2);
-		nums.add(3);
-		nums.add(4);
+		nums.add(2);
 		
 		
 		
-		System.out.print(twoSum(nums,6));
+		System.out.print(twoSum(nums,3));
 	}
 	
 	 public static ArrayList<ArrayList<Integer>> twoSum(ArrayList<Integer> nums, int target) {
-		 ArrayList<ArrayList<Integer>> ret = new ArrayList<ArrayList<Integer>>(); ;
-	        
+		 HashSet<ArrayList<Integer>> ret = new HashSet<ArrayList<Integer>>(); 
+		 ArrayList<ArrayList<Integer>> ret2 = new ArrayList<ArrayList<Integer>>(); 
+       
 	        helper(nums, target,0,ret, new ArrayList<>());
-	        return ret;
+	        for(ArrayList<Integer> a:ret)
+				 ret2.add(a);
+	        return ret2;
 	        
 	    }
-	    private static void  helper(ArrayList<Integer> arr, int sum, int n,ArrayList<ArrayList<Integer>> ret, ArrayList<Integer> slate) {
+	    private static void  helper(List<Integer> nums, int sum, int n,HashSet<ArrayList<Integer>> ret, ArrayList<Integer> slate) {
 	   
-	    	if(n==arr.size())
+	    	if(n==nums.size())
 	    	{ if(slate.size()>0)
 	  
 	    		if(sumofArray(slate)==sum) {
@@ -38,10 +45,10 @@ public class SubSetAllSum {
 	    	}
 	    	return;
 	    	}
-	    	slate.add(arr.get(n));
-	    	helper(arr,sum,n+1,ret,slate);
-	    	slate.remove(arr.get(n));
-	    	helper(arr,sum,n+1,ret,slate);
+	    	slate.add(nums.get(n));
+	    	helper(nums,sum,n+1,ret,slate);
+	    	slate.remove(nums.get(n));
+	    	helper(nums,sum,n+1,ret,slate);
 	    
 	}
 		private static int sumofArray(ArrayList<Integer> arr) {

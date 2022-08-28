@@ -1,4 +1,4 @@
-package com.test.sanjeev;
+package com.test.sanjeev.sort;
 
 import java.util.ArrayList;
 import java.util.Collections;

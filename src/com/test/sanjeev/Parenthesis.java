@@ -6,34 +6,33 @@ public class Parenthesis {
 	
 	private static ArrayList<String> result;
 	public static void main(String[] args) {
-		System.out.println(generateParenthesis(3));
+		System.out.println(find_all_well_formed_brackets(3));
 	}
-	static public ArrayList<String> generateParenthesis(int n) {
-	    
-	    result = new ArrayList<String>();
-	    back("", n, 0, n);
-	    return result;
-	}
+	static ArrayList<String> find_all_well_formed_brackets(Integer n) {
+		  
+		  
+        ArrayList<String> list = new ArrayList<String>();
+        helper(list,n,n,0,"");
+        return list;
+    }
+    
+  static void helper(ArrayList<String> parenList, int leftParenLeft, int rightParenLeft,
+		    int currLeftDiff, String currString) {
+	  
+		    if (leftParenLeft == 0 && rightParenLeft == 0) {
+		    	parenList.add(currString);
+		      return;
+		    }
+		    if (leftParenLeft > 0) {
+		      helper(parenList, leftParenLeft - 1, rightParenLeft,
+		        currLeftDiff + 1, currString + '(');
 
-	static public void back(String str, int left, int right, int max) {
-	    
-	    if(right == max) {
-	        result.add(str);
-	        return;
-	    }
-	    
-	    if(left > right) {
-	        StringBuilder sb = new StringBuilder(str);
-	        sb.append("(");
-	        back(sb.toString(), left-1, right, max);
-	    }
-	    
-	    if(left <= right) {
-	        StringBuilder sb = new StringBuilder(str);
-	        sb.append(")");
-	        back(sb.toString(), left, right+1, max);
-	    }
-	}
+		    }
+		    if (currLeftDiff > 0) {
+		      helper(parenList, leftParenLeft, rightParenLeft - 1, currLeftDiff - 1, currString + ')');
+		    }
+
+		  }
 	}
 
 
