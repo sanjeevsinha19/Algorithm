@@ -1,4 +1,4 @@
-package com.test.sanjeev;
+package com.test.sanjeev.dp;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ public class Coins {
 		list.add(1);
 		list.add(3);
 		list.add(5);
-		System.out.print( helper(list,9));
+		System.out.print( helper(list,46));
 
 	}
 

@@ -1,6 +1,4 @@
-package com.test.sanjeev;
-
-import com.test.sanjeev.BST.BinaryTreeNode;
+package com.test.sanjeev.tree;
 
 public class NumberOfUnaryTreeNodes {
 
@@ -8,20 +6,22 @@ public class NumberOfUnaryTreeNodes {
 		Integer[] tree = { 1, 2, 3, 4, 5, null, 6 };
 		
 		
-		BinaryTreeNode root = BST.bstFromPreorder(tree);
-		/*
-		 * root.left = new BinaryTreeNode(tree[1]); root.left.left = new
-		 * BinaryTreeNode(tree[3]); root.left.right = new BinaryTreeNode(tree[4]);
-		 * root.right = new BinaryTreeNode(tree[2]); root.right.left = new
-		 * BinaryTreeNode(4); root.right.right = new BinaryTreeNode(tree[6]);
-		 */
+		TreeNode root = new TreeNode(tree[1]);
+		
+		  root.left = new TreeNode(tree[2]); 
+		  root.left.left = new  TreeNode(tree[3]); 
+		  root.left.right = new TreeNode(tree[4]);
+		  root.right = new TreeNode(tree[2]);
+		  root.right.left = new TreeNode(4);
+		  root.right.right = new TreeNode(tree[6]);
+		 
 		System.out.println(find_single_value_trees(root));
 
 	}
 
 	
 	// static Integer count =0;
-	static Integer find_single_value_trees(BinaryTreeNode root) {
+	static Integer find_single_value_trees(TreeNode root) {
 		
 		process(root);
 		return count;
@@ -29,7 +29,7 @@ public class NumberOfUnaryTreeNodes {
 
 	static Integer count = 0;
 
-	static Boolean process(BinaryTreeNode node) {
+	static Boolean process(TreeNode node) {
 
 		if (node == null) {
 
@@ -43,11 +43,11 @@ public class NumberOfUnaryTreeNodes {
 
 		// If left subtree is singly and non-empty, but data
 		// doesn't match
-		if (node.left != null && node.value != node.left.value)
+		if (node.left != null && node.val != node.left.val)
 			return false;
 
 		// Same for right subtree
-		if (node.right != null && node.value != node.right.value)
+		if (node.right != null && node.val != node.right.val)
 			return false;
 
 		// If none of the above conditions is true, then
@@ -58,7 +58,7 @@ public class NumberOfUnaryTreeNodes {
 
 	}
 
-	static Integer isUniValTree(BinaryTreeNode root, Integer val) {
+	static Integer isUniValTree(TreeNode root, Integer val) {
 
 		if (root == null) {
 			return 1;
@@ -66,7 +66,7 @@ public class NumberOfUnaryTreeNodes {
 
 		// System.out.println(root.value);
 		// Current node value is not equal to the parent node value.
-		if (root.value != val) {
+		if (root.val != val) {
 			return 0;
 		}
 		// Left subtree is not unival tree
@@ -80,15 +80,15 @@ public class NumberOfUnaryTreeNodes {
 		return 1;
 	}
 	 static Integer i=0;
-	    public static BinaryTreeNode bstFromPreorder(Integer[] tree) {
+	    public static TreeNode bstFromPreorder(Integer[] tree) {
 	        return helper(tree,Integer.MAX_VALUE);
 	    }
-	    public static BinaryTreeNode helper(Integer[] tree,int bound)
+	    public static TreeNode helper(Integer[] tree,int bound)
 	    {
 	        if( i==tree.length || tree[i]!=null || tree[i]>bound)
 	            return null;
-	        BinaryTreeNode root=new BinaryTreeNode(tree[i++]);
-	        root.left=helper(tree,root.value);
+	        TreeNode root=new TreeNode(tree[i++]);
+	        root.left=helper(tree,root.val);
 	        root.right=helper(tree,bound);
 	        return root;
 	            

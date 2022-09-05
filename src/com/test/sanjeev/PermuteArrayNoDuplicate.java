@@ -11,7 +11,7 @@ public class PermuteArrayNoDuplicate {
 		ArrayList<Integer> arr = new ArrayList<Integer>();
 		arr.add(1);
 		arr.add(2);
-		arr.add(2);
+		arr.add(3);
 		System.out.println(get_permutations(arr));
 	}
 	

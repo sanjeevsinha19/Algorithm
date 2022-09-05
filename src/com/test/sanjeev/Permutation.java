@@ -9,7 +9,7 @@ public class Permutation {
 		ArrayList<Integer> arr = new ArrayList<>();
 		arr.add(1);
 		arr.add(2);
-		arr.add(2);
+		arr.add(3);
 	
 		System.out.print(get_permutations(arr));
 	}
@@ -27,7 +27,7 @@ public class Permutation {
                 swap(arr, i, k);
                 
                 permute(arr,result,  k+1);
-                swap(arr, k, i);
+                swap(arr, i, k);
             }
             if (k == arr.size() -1){
             	ArrayList<Integer> nset= new ArrayList<Integer>(arr);
