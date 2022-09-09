@@ -13,10 +13,10 @@ public class RightViewOfTree {
 		Integer[] tree = { 3,9,20,null,null,15,7 };
 		
 		
-		TreeNode roots = new TreeNode(1);
-		TreeNode root1 = new TreeNode(2);
-		TreeNode root2 = new TreeNode(3);
-		TreeNode root3 = new TreeNode(4);
+		BinaryTreeNode roots = new BinaryTreeNode(1);
+		BinaryTreeNode root1 = new BinaryTreeNode(2);
+		BinaryTreeNode root2 = new BinaryTreeNode(3);
+		BinaryTreeNode root3 = new BinaryTreeNode(4);
 		//TreeNode root4 = new TreeNode(7);
 		
 		root2.left= root3;
@@ -26,20 +26,20 @@ public class RightViewOfTree {
 		System.out.print(rightSideView(roots));
 	}
 
-	public static List<Integer> rightSideView(TreeNode root) {
+	public static List<Integer> rightSideView(BinaryTreeNode root) {
 		
 		List<Integer> result = new ArrayList<Integer>();
 		if(root==null) return result;
-		Queue<TreeNode> q = new LinkedList<TreeNode>();
+		Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
 		q.add(root);
-		TreeNode node = root;
+		BinaryTreeNode node = root;
 
 		while (!q.isEmpty()) {
 			int count = q.size();
 			int temp = 0;
 			for (int i = 0; i < count; i++) {
 				node = q.remove();
-				temp = node.val;
+				temp = node.value;
 				
 				if (node.left != null)
 					q.add(node.left);

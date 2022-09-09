@@ -2,17 +2,17 @@ package com.test.sanjeev.tree;
 
 public class BST {
    
-    public static TreeNode bstFromPreorder(Integer[] tree) {
+    public static BinaryTreeNode bstFromPreorder(Integer[] tree) {
         return preOrder(tree,0, tree.length-1);
     }
    
-    	 private static TreeNode preOrder(Integer[] preorder, int start, int end) {
+    	 private static BinaryTreeNode preOrder(Integer[] preorder, int start, int end) {
     	        if(start > end) return null;
     	        
-    	        TreeNode node = new TreeNode(preorder[start]);
+    	        BinaryTreeNode node = new BinaryTreeNode(preorder[start]);
     	        int i;
     	        for(i=start;i<=end;i++) {
-    	        if(preorder[i] > node.val)
+    	        if(preorder[i] > node.value)
     	            break;
     	        }
     	 

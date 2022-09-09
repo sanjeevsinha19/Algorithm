@@ -7,47 +7,32 @@ import java.util.Queue;
 
 public class TreeLevelOrderTraesal {
 
-	// Definition for a binary tree node.
-	public class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
-
-		TreeNode() {
-		}
-
-		TreeNode(int val) {
-			this.val = val;
-		}
-
-		TreeNode(int val, TreeNode left, TreeNode right) {
-			this.val = val;
-			this.left = left;
-			this.right = right;
-		}
-	}
 
 	public static void main(String[] args) {
 
 	}
 
-	public List<List<Integer>> levelorderTraversal(TreeNode root) {
+	public List<List<Integer>> levelorderTraversal(BinaryTreeNode root) {
 
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
-		Queue<TreeNode> q = new LinkedList<TreeNode>();
+		Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
 		q.add(root);
-		TreeNode node = root;
+		BinaryTreeNode node = root;
 
 		while (!q.isEmpty()) {
 			int count = q.size();
 			ArrayList<Integer> temp = new ArrayList<Integer>();
 			for (int i = 0; i < count; i++) {
 				node = q.remove();
-				temp.add(node.val);
+				temp.add(node.value);
 				if (node.left != null)
 					q.add(node.left);
+				else
+					temp.add(null);
 				if (node.right != null)
 					q.add(node.right);
+				else
+					temp.add(null);	
 			}
 			result.add(temp);
 		}

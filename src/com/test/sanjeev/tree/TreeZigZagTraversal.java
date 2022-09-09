@@ -13,11 +13,11 @@ public class TreeZigZagTraversal {
 			Integer[] tree = { 3,9,20,null,null,15,7 };
 			
 			
-			TreeNode root = new TreeNode(3);
-			TreeNode root1 = new TreeNode(9);
-			TreeNode root2 = new TreeNode(20);
-			TreeNode root3 = new TreeNode(15);
-			TreeNode root4 = new TreeNode(7);
+			BinaryTreeNode root = new BinaryTreeNode(3);
+			BinaryTreeNode root1 = new BinaryTreeNode(9);
+			BinaryTreeNode root2 = new BinaryTreeNode(20);
+			BinaryTreeNode root3 = new BinaryTreeNode(15);
+			BinaryTreeNode root4 = new BinaryTreeNode(7);
 			
 			root2.left= root3;
 			root2.right = root4;
@@ -33,22 +33,22 @@ public class TreeZigZagTraversal {
 			System.out.print(ZigZagTraversal(root));
 		}
 
-		public static List<List<Integer>> ZigZagTraversal(TreeNode root) {
+		public static List<List<Integer>> ZigZagTraversal(BinaryTreeNode root) {
 			
 
 			List<List<Integer>> result = new ArrayList<List<Integer>>();
-			Queue<TreeNode> q = new LinkedList<TreeNode>();
+			Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
 			
 			if(root == null) return result;
 			q.add(root);
-			TreeNode node = root;
+			BinaryTreeNode node = root;
 			int levelCount = 0;
 			while (!q.isEmpty()) {
 				int count = q.size();
 				ArrayList<Integer> temp = new ArrayList<Integer>();
 				for (int i = 0; i < count; i++) {
 					node = q.remove();
-					temp.add(node.val);
+					temp.add(node.value);
 					
 					
 					if (node.left != null)

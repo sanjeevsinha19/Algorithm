@@ -3,11 +3,11 @@ package com.test.sanjeev.tree;
 public class SinglevalueTree {
 
 	public static void main(String[] args) {
-		TreeNode root = new TreeNode(2);
-		TreeNode root1 = new TreeNode(2);
-		TreeNode root2 = new TreeNode(2);
-		TreeNode root3 = new TreeNode(3);
-		TreeNode root4 = new TreeNode(4);
+		BinaryTreeNode root = new BinaryTreeNode(2);
+		BinaryTreeNode root1 = new BinaryTreeNode(2);
+		BinaryTreeNode root2 = new BinaryTreeNode(2);
+		BinaryTreeNode root3 = new BinaryTreeNode(3);
+		BinaryTreeNode root4 = new BinaryTreeNode(2);
 		//TreeNode root5 = new TreeNode(1);
 		//root2.left= root3;
 		//root2.right = root4;
@@ -22,12 +22,12 @@ public class SinglevalueTree {
 
 
 	int univalCount =0;
-int getUnivaleSubtrees(TreeNode root) {
+boolean getUnivaleSubtrees(BinaryTreeNode root) {
 	helper(root);
-	return univalCount;
+	return univalCount==1;
 	
 }
-private Boolean helper(TreeNode node) {
+private Boolean helper(BinaryTreeNode node) {
 	if(node.left==null && node.right==null) {
 		univalCount++;
 		return true;
@@ -38,12 +38,12 @@ private Boolean helper(TreeNode node) {
 	Boolean leftUval = helper(node.left);
 	Boolean rightUval = helper(node.right);
 	if(leftUval && rightUval) {
-		if(node.left.val== node.val && node.right.val== node.val) {
+		if(node.left.value== node.value && node.right.value== node.value) {
 			univalCount--;
 			return true;
 		}
 		else {
-			univalCount++;
+			//univalCount++;
 			return false;
 		}
 		

@@ -7,22 +7,22 @@ class PostOrderTraversalTree {
 //node of a BST
 
 //function to get a newTreeNode
-	static TreeNode getNode(Integer data) {
+	static BinaryTreeNode getNode(Integer data) {
 		// Allocate memory
 		if(data==null) return null;
-		TreeNode newNode = new TreeNode(data);
+		BinaryTreeNode newNode = new BinaryTreeNode(data);
 
 		// put in the data
 		newNode.left = newNode.right = null;
 		return newNode;
 	}
 	
-	static void  preorderTraversal(TreeNode root)
+	static void  preorderTraversal(BinaryTreeNode root)
 	{
 	    if (root == null)
 	        return;
 	         
-	    System.out.print(root.val + " ");
+	    System.out.print(root.value + " ");
 	     
 	    preorderTraversal(root.left);
 	    preorderTraversal(root.right);
@@ -30,23 +30,23 @@ class PostOrderTraversalTree {
 
 //function to construct a BST from
 //its level order traversal
-	static TreeNode LevelOrder(TreeNode root, int data) {
+	static BinaryTreeNode LevelOrder(BinaryTreeNode root, int data) {
 		if (root == null) {
 			root = getNode(data);
 			return root;
 		}
-		if (data <= root.val)
+		if (data <= root.value)
 			root.left = LevelOrder(root.left, data);
 		else
 			root.right = LevelOrder(root.right, data);
 		return root;
 	}
 
-	static TreeNode constructBst(Integer arr[], int n) {
+	static BinaryTreeNode constructBst(Integer arr[], int n) {
 		if (n == 0)
 			return null;
 		
-		TreeNode root = null;
+		BinaryTreeNode root = null;
 
 		for (int i = 0; i < n-1; i++) {
 			
@@ -59,18 +59,29 @@ class PostOrderTraversalTree {
 
 //function to print the inorder traversal
 	
-	  static void inorderTraversal(TreeNode root) { if (root == null) return;
+	  static void inorderTraversal(BinaryTreeNode root) { 
+		  if (root == null) return;
 	  
-	  inorderTraversal(root.left); System.out.print(root.val + " ");
-	  inorderTraversal(root.right); }
+	  inorderTraversal(root.left); System.out.print(root.value + " ");
+	  inorderTraversal(root.right);
+	  }
 	 
-
+	//function to print the inorder traversal
+		
+	  static void postorderTraversal(BinaryTreeNode root) { 
+		  if (root == null) return;
+	  
+		  postorderTraversal(root.left); 
+		 
+		  postorderTraversal(root.right);
+		  System.out.print(root.value + " ");
+	  }
 //Driver code
 	public static void main(String args[]) {
 		Integer arr[] = { 3, 9, 20, null, null, 15, 7 };
 		int n = arr.length;
 
-		TreeNode root = constructBst(arr, n);
+		BinaryTreeNode root = constructBst(arr, n);
 
 		//System.out.print("Inorder Traversal: ");
 		//inorderTraversal(root);
