@@ -8,8 +8,8 @@ import java.util.Stack;
 public class getSumPathClass {
 
 	public static void main(String[] args) {
-		TreeNode root = new TreeNode(-2);
-		TreeNode root1 = new TreeNode(-3);
+		BinaryTreeNode root = new BinaryTreeNode(-2);
+		BinaryTreeNode root1 = new BinaryTreeNode(-3);
 		//TreeNode root2 = new TreeNode(3);
 		//TreeNode root3 = new TreeNode(15);
 		//TreeNode root4 = new TreeNode(7);
@@ -23,7 +23,7 @@ public class getSumPathClass {
 
 	}
 
-	private static List<List<Integer>> getSumPath(TreeNode root, int targetSum) {
+	private static List<List<Integer>> getSumPath(BinaryTreeNode root, int targetSum) {
 		
 		List<List<Integer>> result = new ArrayList<>();
 		if(root==null) return result;
@@ -31,11 +31,11 @@ public class getSumPathClass {
 		
 		return helper(root, result, targetSum, new Stack<Integer>());
 	}
-	static List<List<Integer>> helper(TreeNode node, List<List<Integer>> result, int target, Stack<Integer> slate) {
-		slate.push(node.val);
+	static List<List<Integer>> helper(BinaryTreeNode node, List<List<Integer>> result, int target, Stack<Integer> slate) {
+		slate.push(node.value);
 		if(node.left==null && node.right==null) {
 			
-			if(target- node.val==0) {
+			if(target- node.value==0) {
 				Iterator<Integer> it = slate.iterator();
 				List<Integer> temp =  new ArrayList<>();
 				while(it.hasNext()) {
@@ -48,9 +48,9 @@ public class getSumPathClass {
 		}
 			
 			if(node.left!=null )
-				helper(node.left, result, target- node.val, slate);
+				helper(node.left, result, target- node.value, slate);
 			if(node.right!=null)
-				helper(node.right, result, target - node.val, slate);
+				helper(node.right, result, target - node.value, slate);
 			slate.pop();
 		
 		return result;
