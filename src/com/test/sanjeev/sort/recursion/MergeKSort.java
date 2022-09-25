@@ -1,4 +1,4 @@
-package com.test.sanjeev.sort;
+package com.test.sanjeev.sort.recursion;
 
 import java.util.ArrayList;
 

@@ -1,5 +1,7 @@
 package com.test.sanjeev.tree;
 
+import java.util.ArrayList;
+
 //Java implementation to construct a BST
 //from its level order traversal
 class PostOrderTraversalTree {
@@ -59,11 +61,12 @@ class PostOrderTraversalTree {
 
 //function to print the inorder traversal
 	
-	  static void inorderTraversal(BinaryTreeNode root) { 
-		  if (root == null) return;
-	  
-	  inorderTraversal(root.left); System.out.print(root.value + " ");
-	  inorderTraversal(root.right);
+	  static ArrayList<Integer> inorderTraversal(BinaryTreeNode root, ArrayList<Integer> result) { 
+		  if (root == null) return result;
+	  result.add(root.value);
+	  inorderTraversal(root.left, result); 
+	  inorderTraversal(root.right, result);
+	  return result;
 	  }
 	 
 	//function to print the inorder traversal
